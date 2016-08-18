@@ -4,14 +4,14 @@ const jsonMask = require("json-mask");
 const compile = jsonMask.compile;
 const filter = jsonMask.filter;
 
-module.exports = (opt = { query: "fields" }) => {
-	const partialJSON = (obj, fields) => {
+module.exports = function (opt = { query: "fields" }) {
+	function partialJSON(obj, fields) {
 		if (!fields) return obj;
 		return filter(obj, compile(fields));
-	};
+	}
 
-	const wrap = (orig) => {
-		return (obj) => {
+	function wrap(orig) {
+		return function (obj) {
 			let param = this.req.query[opt.query];
 			if (arguments.length === 1) {
 				orig(partialJSON(obj, param));
@@ -23,9 +23,9 @@ module.exports = (opt = { query: "fields" }) => {
 				}
 			}
 		};
-	};
+	}
 
-	return (req, res, next) => {
+	return function (req, res, next) {
 		res.json = wrap(res.json.bind(res));
 		res.jsonp = wrap(res.jsonp.bind(res));
 		next();
