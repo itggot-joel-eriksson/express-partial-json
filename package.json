@@ -1,0 +1,22 @@
+{
+  "name": "express-partial-json",
+  "version": "1.0.0",
+  "description": "Express middleware based on nemtsov/express-partial-response",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itggot-joel-eriksson/express-partial-json.git"
+  },
+  "author": "Joel Eriksson <joel.eriksson3@itggot.se>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itggot-joel-eriksson/express-partial-json/issues"
+  },
+  "homepage": "https://github.com/itggot-joel-eriksson/express-partial-json#readme",
+  "dependencies": {
+    "json-mask": "^0.3.8"
+  }
+}
